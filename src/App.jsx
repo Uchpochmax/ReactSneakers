@@ -56,10 +56,9 @@ function App() {
 
   const onAddToFavourite = async (obj) => {
     try {
-      const findFavItem = favouritesItems.find(favObj => +favObj.parentId === +obj.id)
-      if (findFavItem) {
-        axios.delete(`https://651373a38e505cebc2e9df02.mockapi.io/favourites/${findFavItem.id}`)
-        setFavouritesItems((prev) => prev.filter(item => +item.parentId !== +obj.id))
+      if (favouritesItems.find(favObj => +favObj.id === +obj.id)) {
+        axios.delete(`https://651373a38e505cebc2e9df02.mockapi.io/favourites/${obj.id}`)
+        setFavouritesItems((prev) => prev.filter(item => +item.id !== +obj.id))
       }
       else {
         const resp = await axios.post('https://651373a38e505cebc2e9df02.mockapi.io/favourites', obj)
@@ -70,7 +69,6 @@ function App() {
       alert('Не удалось добавить в избранное')
     }
   }
-  
   const onChangeInput = (e) => {
     setSearchValue(e.target.value)
   }
@@ -88,12 +86,8 @@ function App() {
     return cartItems.some(obj => Number(obj.parentId) === Number(id))
   }
 
-  const hasFavItem = (id) => {
-    return favouritesItems.some(obj => Number(obj.parentId) === Number(id))
-  }
-
   return (
-    <AppContext.Provider value={{ items, cartItems, favouritesItems, setCartOpened, setCartItems, hasCartItem, hasFavItem, onAddToCart, onAddToFavourite }}>
+    <AppContext.Provider value={{ items, cartItems, favouritesItems, setCartOpened, setCartItems, hasCartItem, onAddToCart, onAddToFavourite }}>
       <div className="wrapper">
         <Drawer onCloseCart={() => setCartOpened(false)} items={cartItems} onRemove={onRemoveItem} opened={cartOpened} />
         <Header onClickCart={() => setCartOpened(true)} />

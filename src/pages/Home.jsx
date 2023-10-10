@@ -29,8 +29,8 @@ const Home = ({
       <div className="header-block">
         <h1>{searchValue ? `Поиск по запросу: '${searchValue}'` : 'Все кроссовки'}</h1>
         <div className="search-block">
-          <img src="/img/search.svg" alt="search" />
-          {searchValue && <img src="/img/btn-remove.svg" alt="clear" className="remove-btn clear" onClick={() => setSearchValue('')} />}
+          <img src="img/search.svg" alt="search" />
+          {searchValue && <img src="img/btn-remove.svg" alt="clear" className="remove-btn clear" onClick={() => setSearchValue('')} />}
           <input type="text" placeholder="Поиск..." onChange={onChangeInput} value={searchValue} />
         </div>
       </div>

@@ -25,7 +25,7 @@ const Orders = () => {
             </div>
             <div className="sneakers">
                 {(isLoading
-                    ? [...Array(8)]
+                    ? [...Array(4)]
                     : orders)
                         .map((card, index) => <Card
                             key={card ? card.id : index}

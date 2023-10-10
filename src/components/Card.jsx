@@ -4,7 +4,7 @@ import AppContext from "../context";
 
 const Card = ({ onFavourite, onPlus, id, imgUrl, name, price, favourite = false, loading = true }) => {
     const [isFavourite, setIsFavourite] = useState(favourite);
-    const { hasCartItem, hasFavItem } = React.useContext(AppContext)
+    const { hasCartItem } = React.useContext(AppContext)
     const itemObj = { id, parentId: id, imgUrl, name, price };
 
     const onPlusClick = () => {
@@ -36,7 +36,7 @@ const Card = ({ onFavourite, onPlus, id, imgUrl, name, price, favourite = false,
                 </ContentLoader> :
                 <>
                     <div className="favourite" onClick={onFavouriteClick}>
-                        {onFavourite && <img className="liked" src={hasFavItem(id) ? "img/like-color.svg" : "img/likes-border.svg"} alt="unliked" />}
+                        {onFavourite && <img className="liked" src={isFavourite ? "img/like-color.svg" : "img/likes-border.svg"} alt="unliked" />}
                     </div>
                     <img width={133} height={112} src={imgUrl} alt="sneakers-1" />
                     <p className="card__name">{name}</p>
