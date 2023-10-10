@@ -35,11 +35,11 @@ const Drawer = ({ items = [], onCloseCart, onRemove, opened }) => {
   return (
     <div className={`overlay ${opened ? 'overlayVis' : ''}`}>
       <div className="drawer">
-        <h2 >Корзина<img src="/img/btn-remove.svg" alt="close" className="remove-btn" onClick={onCloseCart} /></h2>
+        <h2 >Корзина<img src="img/btn-remove.svg" alt="close" className="remove-btn" onClick={onCloseCart} /></h2>
 
         {items.length === 0 ?
           <Info
-            img={isOrderComplete ? "/img/order.svg" : "/img/empty.jpg"}
+            img={isOrderComplete ? "img/order.svg" : "img/empty.jpg"}
             title={isOrderComplete ? 'Заказ оформлен!' : 'Корзина пустая'}
             descr={isOrderComplete ? `Ваш заказ #${orderId} скоро будет передан курьерской доставке` : 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ'}></Info> :
           <>
@@ -52,7 +52,7 @@ const Drawer = ({ items = [], onCloseCart, onRemove, opened }) => {
                       <p className="card__name">{item.name}</p>
                       <b>{item.price} руб.</b>
                     </div>
-                    <img src="/img/btn-remove.svg" alt="remove" className="remove-btn" onClick={() => onRemove(item.id)} />
+                    <img src="img/btn-remove.svg" alt="remove" className="remove-btn" onClick={() => onRemove(item.id)} />
                   </div>
                 )
               })}
@@ -70,7 +70,7 @@ const Drawer = ({ items = [], onCloseCart, onRemove, opened }) => {
                   <b>{totalPrice*0.05} руб.</b>
                 </li>
               </ul>
-              <button disabled={isLoading} onClick={onClickOrder} className="green-btn">Оформить заказ <img src="/img/arrow.svg" alt="arrow" /></button>
+              <button disabled={isLoading} onClick={onClickOrder} className="green-btn">Оформить заказ <img src="img/arrow.svg" alt="arrow" /></button>
             </div>
           </>}
 

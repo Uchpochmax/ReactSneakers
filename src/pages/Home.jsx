@@ -2,7 +2,6 @@ import Card from "../components/Card";
 
 const Home = ({
   items,
-  cartItems,
   searchValue,
   onChangeInput,
   setSearchValue,
